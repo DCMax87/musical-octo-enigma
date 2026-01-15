@@ -1,14 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Trello Timeline Viewer</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Viewer</title>
+    <link rel="stylesheet" href="./css/timeline.css">
+    <script src="https://p.trellocdn.com/power-up.min.js"></script>
+    <script src="https://unpkg.com/vis-timeline@7.7.3/standalone/umd/vis-timeline-graph2d.min.js"></script>
+    <link href="https://unpkg.com/vis-timeline@7.7.3/styles/vis-timeline-graph2d.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
-        <h1 style="display: none;">Trello Timeline Viewer</h1>
-        <div class="board-name" style="display: none;">Your Board Name</div>
+    <h1>Trello Timeline Viewer</h1>
+    
+    <div id="loading" class="loading-section">
+        <div class="loader"></div>
+        <p>Loading board data...</p>
     </div>
-    <script src="script.js"></script>
+    
+    <div id="timeline-section" class="hidden">
+        <div class="board-name" id="board-name"></div>
+        
+        <div class="controls">
+            <div class="view-toggle">
+                <button id="view-timeline" class="active">Timeline</button>
+                <button id="view-week">Week</button>
+                <button id="view-calendar">Calendar</button>
+            </div>
+            <div class="control-group">
+                <label for="swimlane-select">Swimlanes:</label>
+                <select id="swimlane-select">
+                    <option value="campaign">Campaign (List)</option>
+                    <option value="content-type">Content Type (Label)</option>
+                    <option value="person">Person (Assignee)</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="colour-select">Colour by:</label>
+                <select id="colour-select">
+                    <option value="content-type">Content Type (Label)</option>
+                    <option value="campaign">Campaign (List)</option>
+                    <option value="checklist">Checklist</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="stats-dashboard" id="stats-dashboard"></div>
+        
+        <div class="additional-controls">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search-input" placeholder="Search tasks...">
+            </div>
+            <label class="toggle-switch">
+                <input type="checkbox" id="show-completed" checked>
+                <label for="show-completed">Show Completed</label>
+            </label>
+        </div>
+        
+        <div class="filters-section">
+            <div class="filters-header">
+                <span>Filter by Content Type (Labels)</span>
+                <span class="filters-toggle-all" id="toggle-all-filters">Deselect All</span>
+            </div>
+            <div class="filter-checkboxes" id="filter-checkboxes"></div>
+        </div>
+        
+        <div class="stats" id="stats"></div>
+        <div id="timeline"></div>
+        <div id="week-view" class="hidden">
+            <div class="week-header">
+                <div class="week-title" id="week-title"></div>
+                <div class="week-nav">
+                    <button id="prev-week">← Previous</button>
+                    <button id="this-week">This Week</button>
+                    <button id="next-week">Next →</button>
+                </div>
+            </div>
+            <div class="week-grid" id="week-grid"></div>
+        </div>
+        <div id="calendar" class="hidden">
+            <div class="calendar-header">
+                <div class="calendar-title" id="calendar-title"></div>
+                <div class="calendar-nav">
+                    <button id="prev-month">← Previous</button>
+                    <button id="today-btn">Today</button>
+                    <button id="next-month">Next →</button>
+                </div>
+            </div>
+            <div class="calendar-grid" id="calendar-grid"></div>
+        </div>
+    </div>
+    
+    <div id="item-modal" class="item-modal hidden">
+        <div class="item-modal-content">
+            <div class="item-modal-header">
+                <div class="item-modal-avatar" id="modal-avatar"></div>
+                <div class="item-modal-title" id="modal-title"></div>
+            </div>
+            <div class="item-modal-meta" id="modal-meta"></div>
+        </div>
+    </div>
+
+    <script src="./js/timeline.js"></script>
 </body>
 </html>
