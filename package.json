@@ -1,0 +1,28 @@
+{
+  "name": "trello-timeline-powerup",
+  "version": "1.0.0",
+  "description": "A Trello Power-Up that visualizes checklist items with due dates on an interactive timeline",
+  "main": "js/client.js",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx http-server -p 8000",
+    "tunnel": "npx ngrok http 8000"
+  },
+  "keywords": [
+    "trello",
+    "power-up",
+    "timeline",
+    "gantt",
+    "visualization",
+    "calendar",
+    "project-management"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/trello-timeline-powerup.git"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

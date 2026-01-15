@@ -1,0 +1,14 @@
+{
+  "name": "Timeline Viewer",
+  "details": "Visualize your Trello board tasks with checklist items on an interactive timeline, calendar, and week view",
+  "icon": {
+    "url": "./images/icon.svg"
+  },
+  "author": "Your Name",
+  "capabilities": [
+    "board-buttons",
+    "show-settings"
+  ],
+  "connectorUrl": "./js/client.js",
+  "tags": ["project management", "timeline", "visualization", "calendar"]
+}
